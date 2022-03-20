@@ -3,41 +3,44 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("Dog", {
     id: {
-      type: DataTypes.UUID, // identificado unico para que no se pise con los dato de la db
-      primaryKey: true,
-      allowNull: false,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.UUID,    // identificador unico para que no se pisen los id de la db con los de la api
+      defaultValue: DataTypes.UUIDV4,  
+      allowNull: false,                 //no se permite que este campo esté vacío, o sea, es un campo requerido
+      primaryKey: true
     },
+
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
-    height_min: {
+
+    height: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    height_max: {
+
+    weight: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    weight_min: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    weight_max: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+
     life_span: {
-      type: DataTypes.STRING,
+      type:DataTypes.STRING,
+      allowNull: false,
     },
-    userCreated: {
-      type: DataTypes.BOOLEAN,
-      default: true,
-    },
+
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN4HJhnJo07reTM0Lta1HoTollHloqsqRUVw&usqp=CAU`,
+                               ////default value para que me traiga una imagen por defecto si no encuentra una
     },
+
+    createdInDb: {     //para distinguir entre los que me trae la api y los creados en la base de datos
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    }
+
   });
 }
