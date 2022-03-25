@@ -1,21 +1,26 @@
+//importo los hook que voy a usar de react
 import React, { useState, useEffect } from "react";
+//importo los hooks de react-redux (previamente se instala npm i react-redux)
 import { useSelector, useDispatch } from "react-redux";
+//importo las actions que necesito en este componente
 import { getDogs, FilterDogsByTemperament, GetTemperaments, FilterByName, FilterByWeight, FilterCreated } from '../actions';
+//importo los componentes que voy a usar
 import { Link } from 'react-router-dom';
 import Card from './Card'
 import Paginado from './Paginado'
+import SearchBar from "./SearchBar";
 
 export default function Home () {
     //me traigo el estado de mi action con useSelector para despacharlo posteriormente
 
-    const dispatch = useDispatch(); // declaro la accion a despachar
+    const dispatch = useDispatch(); // declaro la accion que despacha
     const allDogs = useSelector((state) => state.dogs); // traigo todo lo que esta en el estado (de parmas)
     const allTemperaments = useSelector((state) => state.temperament);
     
 
     //-------- PAGINADO -------- ©\
     const [currentPage, setCurrentPage] = useState(1)  //le paso el estado local con la primer página que se renderiza
-    const [ dogsPerPage ] = useState (8)  //cuántos personajes quiero por página
+    const [ dogsPerPage ] = useState (8)  //indico cuántos perros quiero por página
     const indexOfLastDog = currentPage * dogsPerPage     //cuando empieza será 8 
     const indexOffirstDog = indexOfLastDog - dogsPerPage   // 0
     const currentDogs = allDogs.slice(indexOffirstDog, indexOfLastDog)  //slice toma una porción del arreglo dependiendo lo que le estoy pasando por parámetro
@@ -66,11 +71,14 @@ export default function Home () {
   }
     return(
        <div>
-           <Link to ='/dogs'>Create Dog</Link>
-           <h1>Perros de raza ↓</h1>
+           <Link  to="/dog">
+                <button className='buttonCreate2'>Create New Dog</button>
+            </Link>
            <button onClick={e => {handleClick(e)}}>
                 Reload Dogs              
            </button> 
+           <h1>Perros de raza ↓</h1>
+           <SearchBar />
        <div>
 
        <div className='Filters'>
@@ -102,17 +110,16 @@ export default function Home () {
         allDogs = {allDogs.length}
         pagedTotal = {pagedTotal}
         />
-
-        {
-         currentDogs?.map((el) => {  // finalmente mapea y me entrega la data 
-          
-            return (
-              <Link to={"/home/" + el.id}>
-                <Card image={el.image} name={el.name} temperament={el.temperament} weight={`Weight : ${el.weight} kg `} />
-              </Link>
-            );
-          })
-         }
+        
+        { currentDogs?.map( (el) => {
+             return(
+                 <div key={el.id}>
+                    <Link  to={'/dogs/' + el.id}>
+                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.temperaments.map((el) => el.name.concat(" "))} weight={`Weight : ${el.weight}`}  key={el.id} />
+                     </Link>
+                 </div>
+                    );
+        })}
        </div>
        </div>
     )

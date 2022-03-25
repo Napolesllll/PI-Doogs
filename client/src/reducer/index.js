@@ -1,10 +1,11 @@
 
-import { GET_DOGS, FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, FILTER_BY_NAME, FILTER_BY_WEIGHT, FILTER_CREATED, GET_DOG_NAME} from '../actions/index';
+import { GET_DOGS, FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, FILTER_BY_NAME, FILTER_BY_WEIGHT, FILTER_CREATED, GET_DOG_NAME, GET_DETAIL, RES_STATE} from '../actions/index';
 
 const initialState = {
     dogs : [],
     temperament: [],
-    allDogs : []
+    allDogs : [],
+    detail: [],
 }
 
 
@@ -23,13 +24,13 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                 temperament: action.payload,
             };
 
-            case FILTER_BY_TEMPERAMENT:
+        case FILTER_BY_TEMPERAMENT:
 
-                let allDog = state.allDogs;
-                let temperamentsFiltered = action.payload === "all"  ? allDog: allDog.filter((elem) =>
-                  elem.temperament?.includes(action.payload)
+            let allDog = state.allDogs;
+            let temperamentsFiltered = action.payload === "all"  ? allDog: allDog.filter((elem) =>
+              elem.temperament?.includes(action.payload)
                 );
-                  return {
+                 return {
                        ...state,
                         dogs: temperamentsFiltered,
                      };
@@ -73,18 +74,29 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                 dogs: filterWeight,
             };
 
-        case FILTER_CREATED:       //si el valor de mi acción es created, traigo todos aquellos creados en la DB  
-        //   const allDogs2 = state.allDogs
+        case FILTER_CREATED:   //si el valor de mi acción es created, traigo todos aquellos creados en la DB  
+       
           const createdFilter = action.payload === 'created'? state.allDogs.filter(el => el.createdInDb) : state.allDogs.filter(el => !el.createdInDb)   //primero siempre filtro el arreglo que tiene todo
                 return {         //retorno el estado, y si mi acción vale All traigo los de la api y los filtrados
                     ...state,
-                    dogs: action.payload === 'all' ? state.allDogs : createdFilter
+                    dogs: action.payload === 'all' ? state.allDogs : createdFilter 
                 };
       //lo renderizo en el array dogs, este es el filtrado de buscar por nombre que hice en el back
-            case GET_DOG_NAME:
+        case GET_DOG_NAME:
                 return {
                     ...state,
                     dogs: action.payload,  
+                }
+
+        case GET_DETAIL: //al hacer click sobre un perro accedo a sus detalles
+            return {
+                ...state,
+                detail: action.payload,    // a detail que es el estado inicial se le  pasa action.payload
+            }
+            case RES_STATE:
+                return{
+                    ...state,
+                    detail: []
                 }
             default: 
                 return state;

@@ -3,7 +3,7 @@ import styles from "../styles/Paged.module.css";
 
 export default function Paged ({ dogsPerPage, allDogs, pagedTotal}) {
     const pageNumber = []; 
-    const paginado = Math.ceil(allDogs/dogsPerPage); //el numero redondo que resulta de dividir todos los dogs x la cant de dogs x página
+    const paginado = Math.ceil(allDogs/dogsPerPage); //el numero redondo que resulta de dividir todos los dogs x la cantidad de dogs x página OSEA 8 POR PAGINA
 
     for (let i = 1; i <= paginado; i++) {
         pageNumber.push(i)

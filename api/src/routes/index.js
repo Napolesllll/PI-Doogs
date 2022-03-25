@@ -58,7 +58,7 @@ router.get('/dogs', async (req, res) => {
         res.status(200).send(dogName) :
         res.status(404).send('Doggy Not Found');
     }else {
-        res.status(200).send(totalDogs);                //si no hay name por query manda un status 200 con todos los dogs
+        res.status(200).send(totalDogs);      //si no hay name por query manda un status 200 con todos los dogs
     }
 })
 
@@ -95,9 +95,9 @@ router.post('/dog', async (req, res) => {
         image,
         createdInDb,
         temperament,
-    }= req.body                                       //me traigo del body todo lo que necesito
+    }= req.body                         //me traigo del body todo lo que necesito
 
-    let dogCreated = await Dog.create({                //creo el dog con el modelo Dog y le paso lo mismo excepto el temperament porque lo tengo que encontrar en un modelo que ya tengo
+    let dogCreated = await Dog.create({//creo el dog con el modelo Dog y le paso lo mismo excepto el temperament porque lo tengo que encontrar en un modelo que ya tengo
         name,
         height,
         weight,
@@ -106,7 +106,7 @@ router.post('/dog', async (req, res) => {
         createdInDb,
         })
 
-    let temperamentDb = await Temperament.findAll({     //dentro de mi modelo encontrá todos los temperament que coincidan con lo que le paso por body
+    let temperamentDb = await Temperament.findAll({  //dentro de mi modelo encontrá todos los temperament que coincidan con lo que le paso por body
         where: {
             name: temperament,  //name es igual al temperament que le llega por body
         }

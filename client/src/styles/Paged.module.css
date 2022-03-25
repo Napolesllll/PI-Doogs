@@ -17,13 +17,13 @@
   }
   
   .link {
-    color: #fff;
+    color: rgb(255, 255, 255);
     display:inline-flex;
     padding: 10px;
     margin: 2px;
     border: none;
     cursor: pointer;
-    background-color: #58265083;
+    background-color: #93c2e1;
     border-radius: 10%;
     list-style:none;
     width: 10px;
