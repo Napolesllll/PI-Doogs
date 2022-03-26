@@ -52,7 +52,7 @@ export default function DogCreate() {
         maxlife_span: "",
         image: "",
         temperament: [],
-        createdInBd: false,
+        createdInBd: true,
       });
       if(!crear.name || !crear.temperament){ //si no tiene nombre o no tiene temperament envia un alert con msn de error
          alert('requires all the information')
