@@ -22,8 +22,8 @@ const getApiInfo = async () => {
 
 //// trayendo bases de datos
 const getDbInfo = async () => {
-    return await Dog.findAll({          //me traigo la info de la base de datos del modelo Dog que incluye el mod Temperament
-        include:{                      //porque si no lo incluyo al crear un dog nunca me va a traer el dog con el temperamento
+    return await Dog.findAll({   //me traigo la info de la base de datos del modelo Dog que incluye el mod Temperament
+        include:{            //porque si no lo incluyo al crear un dog nunca me va a traer el dog con el temperamento
             model: Temperament,
             attributes: ['name'],
             through: {
