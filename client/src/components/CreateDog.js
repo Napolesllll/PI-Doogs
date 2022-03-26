@@ -96,8 +96,8 @@ export default function DogCreate() {
 
   return (
     <div className="fromPerfil">
-      <div >
-        <div className='cont1'>
+      <div  className='cont1'>
+        <div>
           
           <Link to="/home">
             <button className="boton5">

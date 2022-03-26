@@ -10,6 +10,7 @@ import Card from './Card'
 import Paginado from './Paginado'
 import SearchBar from "./SearchBar";
 
+import '../styles/Home.css'
 export default function Home () {
     //me traigo el estado de mi action con useSelector para despacharlo posteriormente
 
@@ -70,14 +71,14 @@ export default function Home () {
       dispatch(FilterCreated(e.target.value))  //de value con el e.target.value - dependiendo de cuál clickea el usuario
   }
     return(
-       <div>
+       <div className='content'>
            <Link  to="/dog">
                 <button className='buttonCreate2'>Create New Dog</button>
             </Link>
-           <button onClick={e => {handleClick(e)}}>
+           <button  className='reload' onClick={e => {handleClick(e)}}>
                 Reload Dogs              
            </button> 
-           <h1>Perros de raza ↓</h1>
+           <h1 className='titul'>Perros de raza ↓</h1>
            <SearchBar />
        <div>
 
@@ -115,7 +116,7 @@ export default function Home () {
              return(
                  <div key={el.id}>
                     <Link  to={'/dogs/' + el.id}>
-                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.temperaments.map((el) => el.name.concat(" "))} weight={`Weight : ${el.weight}`}  key={el.id} />
+                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.temperaments.map((el) => el.name.concat(" "))} weight={el.weight}  key={el.id} />
                      </Link>
                  </div>
                     );

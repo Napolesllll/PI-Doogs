@@ -13,7 +13,6 @@ function App() {
       <Route path='/home' component={Home} />
       <Route path='/dog' component= {CreateDog}/>
       <Route path='/dogs/:id' component= {Detail}/>
-      <h1>Henry Dogs</h1>
      </div>
    </BrowserRouter>
   );
