@@ -12,7 +12,8 @@ height: 100vh;
 }
 
 h1{
-    color: rgb(10, 192, 248);
+    color: aqua;
+    border-color: aqua;
 }
 
 .detailInfo {
