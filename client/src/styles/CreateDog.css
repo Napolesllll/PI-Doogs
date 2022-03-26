@@ -31,8 +31,8 @@ input{
 
 .boton5{
     width: 200px;
-    color:rgb(250, 250, 253);
-    background-color: #93c2e1;
+    color:rgb(0, 0, 0);
+    background-color: #4de6de;
     font-family: Georgia, 'Times New Roman', Times, serif;
     cursor: pointer;
     border-radius: 10px;
@@ -45,6 +45,7 @@ input{
     
 .boton5:hover{
     background-color: #404750; 
+    background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
 }
 
 
@@ -54,7 +55,6 @@ input{
      justify-content: space-evenly;
      margin-left:5px;
      background: url(https://thumbs.dreamstime.com/z/modelo-incons%C3%BAtil-veterinario-cl%C3%ADnica-del-veterinario-dise%C3%B1o-plano-fondo-para-una-tarjeta-de-la-invitaci%C3%B3n-o-una-enhorabuena-59666727.jpg);
-     
  }
 
  input{

@@ -1,7 +1,9 @@
 
 .content{
-    display: flex-end;
-
+    background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
+    background-repeat: no-repeat;
+	background-size: 100% 8%;
+   
 }
 .titul{
     margin-left: -500px;
@@ -26,18 +28,18 @@
     margin-left: 10px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: transparent;
+    background-color: none;
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 120%;
     border: 3px solid;
     padding: 8px 30px;
-    color: #19a1fc;
+    color: #4de6de;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .reload:hover{
     
-    background-color: #404750; 
+    background-color: #4de6de43; 
 }
 
 .buttonCreate2  {
@@ -45,25 +47,26 @@
     margin-top: 15px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: transparent;
+    background-color: none;
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 120%;
     border: 3px solid;
     padding: 8px 30px;
-    color: #19a1fc;
+    color: #4de6de;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 }
 
 .buttonCreate2:hover{
-    background-color: #404750; 
+    background-color: #4de6de43; 
 }
 
 .Filters {
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(255, 255, 255);
+    
 }
 
 select {
@@ -77,9 +80,11 @@ select {
     padding: 0px 30px;
     height: 80%;
     margin: 20px;
-    color: #19a1fc;
+    color: #19a1fcce;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
 }
 select:hover {
-    background-color: #404750; 
+    background-color: #19a1fc3c; 
+    background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
 }

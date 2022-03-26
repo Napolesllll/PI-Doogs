@@ -78,7 +78,7 @@ export default function Home () {
            <button  className='reload' onClick={e => {handleClick(e)}}>
                 Reload Dogs              
            </button> 
-           <h1 className='titul'>Perros de raza ↓</h1>
+           <h1 className='titul'>Club Perruno ↓</h1>
            <SearchBar />
        <div>
 
