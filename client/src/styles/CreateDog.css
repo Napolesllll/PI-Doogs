@@ -55,6 +55,7 @@ input{
      justify-content: space-evenly;
      margin-left:5px;
      background: url(https://thumbs.dreamstime.com/z/modelo-incons%C3%BAtil-veterinario-cl%C3%ADnica-del-veterinario-dise%C3%B1o-plano-fondo-para-una-tarjeta-de-la-invitaci%C3%B3n-o-una-enhorabuena-59666727.jpg);
+     
  }
 
  input{
@@ -66,8 +67,12 @@ input{
      text-align:center;
  }
  .imgperfil{
-     margin: -5%;
+     margin-top: -125px;
+     margin-left: -135px;
     
+ }
+ .perrito{
+     margin-right: -50px;
  }
  .concatFiltro{
      display:flex;

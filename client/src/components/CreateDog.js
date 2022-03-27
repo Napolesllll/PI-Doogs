@@ -24,12 +24,12 @@ export default function DogCreate() {
     temperament: [],
     createdInBd: false,
   });
+
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(GetTemperaments());
-    dispatch(resState(resState));
-  }, [dispatch]);
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,6 +42,12 @@ export default function DogCreate() {
         temperament: input.temperament.join(", "),
       };
       dispatch(postDogs(crear));
+      if(!crear.name || !crear.temperament){ //si no tiene nombre o no tiene temperament envia un alert con msn de error
+        alert('requires all the information')
+     }else{
+       alert('Dog Create!!')
+
+     }
       setInput({
         name: "",
         minHeight: "",
@@ -54,12 +60,7 @@ export default function DogCreate() {
         temperament: [],
         createdInBd: true,
       });
-      if(!crear.name || !crear.temperament){ //si no tiene nombre o no tiene temperament envia un alert con msn de error
-         alert('requires all the information')
-      }else{
-        alert('Dog Create!!')
-
-      }
+      
   }
   function handelChange(e) {
     setInput({
@@ -218,7 +219,7 @@ export default function DogCreate() {
         </div>
       </div>
       <div className="imgperfil">
-        <img src={dogForm} alt="perfil" />
+        <img className='perrito'src={dogForm} alt="perfil" />
       </div>
     </div>
   );

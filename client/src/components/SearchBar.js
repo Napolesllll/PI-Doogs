@@ -16,7 +16,7 @@ export default function SearchBar () {
     function handleSubmit (e) {
         e.preventDefault();
         dispatch(getDogName(name));
-        setName();  //para que cuando ya se hizo la busqueda no me siga mostrando el nombre ingresado, seteo el nombre en comillas
+        setName('');  //para que cuando ya se hizo la busqueda no me siga mostrando el nombre ingresado, seteo el nombre en comillas
        }
      
     return(

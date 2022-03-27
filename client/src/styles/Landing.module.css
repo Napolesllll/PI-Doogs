@@ -7,7 +7,7 @@
     flex-direction: column;
     padding-top: 12rem;
     padding-right: 40rem;
-    height: 70vh;
+    height: 71vh;
 
 }
 
@@ -30,6 +30,5 @@
     
 }
 .button:hover{
-    background: #2193e08a;
     background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
 }

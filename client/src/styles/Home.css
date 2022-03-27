@@ -8,12 +8,7 @@
 .titul{
     margin-left: -500px;
 }
-.dogHome {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 50% 50%;
-    background: url(https://i.pinimg.com/564x/e0/79/62/e079627bf8ebd450fa9b35a58694bf8e.jpg);
-}
+
 
 .topHome {
     display: flex;

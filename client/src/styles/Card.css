@@ -6,7 +6,7 @@
     }
     
 .card {
-    width: 350px;
+    width: 300px;
     border-radius: 10%;
     border: 1px solid #e1ecf7;
     margin: 20px;
@@ -18,7 +18,7 @@
 .card:hover{
     background-color: #e1ecf7;
     text-transform: capitalize;
-    width: 360px;
+    width: 330px;
     
    }
    
@@ -48,16 +48,7 @@
   
     
 } 
-.base1{
-    
-    color: aliceblue;
-    justify-content: center;
-    border-radius: 10%;
-    padding: 5px;
-    text-decoration: inherit;
-    
-    
-}
+
 .base2{
     margin-top: -30px;
     color: #71a5de;

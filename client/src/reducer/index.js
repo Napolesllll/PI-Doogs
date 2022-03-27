@@ -24,6 +24,11 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                 temperament: action.payload,
             };
 
+        case 'POST_DOG':  //post dog tiene que estar en el reducer pero no hace nada, porque yo creo un dog en una ruta nueva
+            return {
+                ...state,
+            }
+
         case FILTER_BY_TEMPERAMENT:
 
             let allDog = state.allDogs;
@@ -81,11 +86,11 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                     ...state,
                     dogs: action.payload === 'all' ? state.allDogs : createdFilter 
                 };
-      //lo renderizo en el array dogs, este es el filtrado de buscar por nombre que hice en el back
         case GET_DOG_NAME:
                 return {
                     ...state,
                     dogs: action.payload,  
+                    //lo renderizo en el array dogs, este es el filtrado de buscar por nombre que hice en el back
                 }
 
         case GET_DETAIL: //al hacer click sobre un perro accedo a sus detalles
@@ -93,10 +98,10 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                 ...state,
                 detail: action.payload,    // a detail que es el estado inicial se le  pasa action.payload
             }
-            case RES_STATE:
-                return{
-                    ...state,
-                    detail: []
+        case RES_STATE:
+            return{
+                ...state,
+                detail: []
                 }
             default: 
                 return state;

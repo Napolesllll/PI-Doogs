@@ -31,7 +31,7 @@ export default function Detail(props){
                     <h2>Life span:{myDog[0].life_span}</h2>
                     <ul className='ulDetail'>
                     Temperaments : 
-                    {!myDog[0].createdInDb? myDog[0].temperament  : myDog[0].temperaments.map(el => el.name + (" "))}
+                    {!myDog[0].createdInDb? myDog[0].temperament  : myDog[0].Temperaments.map(el => el.name + (" "))}
                     </ul>
 
             <Link to= '/home'>

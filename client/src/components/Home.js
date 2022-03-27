@@ -116,7 +116,7 @@ export default function Home () {
              return(
                  <div key={el.id}>
                     <Link  to={'/dogs/' + el.id}>
-                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.temperaments.map((el) => el.name.concat(" "))} weight={el.weight}  key={el.id} />
+                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.Temperaments.map((el) => el.name.concat(" "))} weight={el.weight}  key={el.id} />
                      </Link>
                  </div>
                     );

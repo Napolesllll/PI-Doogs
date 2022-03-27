@@ -22,7 +22,7 @@ export function getDogs () {
 }
 export function GetTemperaments() {
     return async function (dispatch) {
-        var json = await axios.get("http://localhost:3001/temperament", {});
+        var json = await axios.get("http://localhost:3001/temperament", );
         return dispatch({
             type: 'GET_TEMPERAMENTS',
             payload: json.data,
@@ -83,7 +83,7 @@ export function getDetail(id){
   
 export function postDogs(payload){
     return async function(){
-        const create= await axios.post('http://localhost:3001/dog',payload);
+        const create = await axios.post('http://localhost:3001/dog',payload);
         return create;
     }
 }
