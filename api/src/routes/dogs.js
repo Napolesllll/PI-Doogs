@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     let totalDogs = await getAllDogs();      //me traigo todos, Db y api
     if(name){                               // si hay un nombre por query
         let dogName = await totalDogs.filter( el => el.name.toLowerCase().includes(name.toLowerCase()));
-        dogName.length ?                          //si hay algún nombre
+        dogName.length ?                       //coge el nombre lo convierte en minuscula y pregunta si esta
         res.status(200).send(dogName) :
         res.status(404).send('Doggy Not Found');
     }else {

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); // libreria para variables de entorno que solo conoce mi server por seguridad
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');

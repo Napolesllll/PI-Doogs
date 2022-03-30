@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetTemperaments, resState, postDogs } from "../actions/index";
+import { GetTemperaments,  postDogs } from "../actions/index";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { validation } from "./Errores";
@@ -9,13 +9,14 @@ import dogForm from '../img/cachorroForm.png'
 
 
 export default function DogCreate() {
+
   const dispatch = useDispatch();
-  const  allTemperaments= useSelector((e) => e.temperament);
+  const allTemperaments = useSelector((e) => e.temperament);
 
   const [input, setInput] = useState({
     name: "",
     minHeight: "",
-    maxHeight: "",
+    maxHeight: "",        // lo que necesita el post
     minWeight: "",
     maxWeight: "",
     minlife_span: "",
@@ -27,27 +28,26 @@ export default function DogCreate() {
 
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    dispatch(GetTemperaments());
-  }, []);
-
-  function handleSubmit(e) {
+  
+  const  handleSubmit = (e) => {
     e.preventDefault();
-      let crear = {
-        name: input.name,
-        height: `${input.minHeight} - ${input.maxHeight}`,
+    let crear = {
+      name: input.name,
+      height: `${input.minHeight} - ${input.maxHeight}`,
         weight: `${input.minWeight} - ${input.maxWeight}`,
         life_span: `${input.minlife_span} - ${input.maxlife_span} years`,
         image: input.image,
-        temperament: input.temperament.join(", "),
+        temperament: input.temperament,
       };
       dispatch(postDogs(crear));
-      if(!crear.name || !crear.temperament){ //si no tiene nombre o no tiene temperament envia un alert con msn de error
-        alert('requires all the information')
-     }else{
-       alert('Dog Create!!')
-
-     }
+      if(!crear.name || !crear.temperament){ 
+        validation({
+          ...input,
+          [e.target.name]: e.target.value,
+        })
+      }else{
+        alert('Dog Create!!')
+      }
       setInput({
         name: "",
         minHeight: "",
@@ -61,42 +61,45 @@ export default function DogCreate() {
         createdInBd: true,
       });
       
-  }
-  function handelChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-      validation({
+    }
+
+    function handelChange(e) {
+      setInput({
         ...input,
+        [e.target.name]: e.target.value,
+      });
+      setErrors(
+        validation({
+          ...input,
           [e.target.name]: e.target.value,
-      })
-    )
-  }
-
-  function handleSelectTemperament(e) { 
-  if(!input.temperament.includes(e.target.value)){
-  
-    setInput({
-      ...input,   // seteo el input para ir guardando lo que el usuario seleccione
-      temperament: [...input.temperament, e.target.value],
-    });
-  } 
-   
-  }
-  function handleDelete(e) {
-  
-    e.preventDefault();
-       setInput({
-      ...input,
-      temperament: input.temperament.filter((temp) => temp !== e.target.innerText),
+        })
+        )
+      }
       
-    });
-  }
+    function handleSelectTemperament(e) { 
+      if(!input.temperament.includes(e.target.value)){
+          
+        setInput({
+          ...input,   // seteo el input para ir guardando lo que el usuario seleccione
+          temperament: [...input.temperament, e.target.value],
+        });
+      } 
+        
+      }
+    function handleDelete(e) {
+      setInput({
+        ...input,
+        temperament: input.temperament.filter((temp) => temp !== e),
+          
+      });
+    }
 
-  return (
-    <div className="fromPerfil">
+    useEffect(() => {
+      dispatch(GetTemperaments());
+    }, [dispatch]);
+      
+      return (
+        <div className="fromPerfil">
       <div  className='cont1'>
         <div>
           
@@ -108,7 +111,7 @@ export default function DogCreate() {
         </div>
         <div>
           <h1 className="titleForm">Create Dog</h1>
-          <form className="fromPerfil" onSubmit={resState}>
+          <form className="fromPerfil" onSubmit={(e) => handleSubmit(e)}>
           
             <div className="">
               <label className="title5">Name:</label>
@@ -183,35 +186,37 @@ export default function DogCreate() {
               </label>
               <select
                 className="boton5"
-                onChange={(e) => handleSelectTemperament(e)}
+                onChange={(e) => handleSelectTemperament (e)}
               >
                 <option>Temperaments</option>
                 {allTemperaments &&
-                  allTemperaments.map((e) => (
+                  allTemperaments.map((e) => ( // mapeo temperamentos y me entrega nombres
                     <option key={e.id} value={e.name}>
                       {e.name}
                     </option>
                   ))}
               </select><br/>
-
-              {input.temperament.map((nombre) => {
+                {/* //nombre del temper que esta en el input */}
+              {input.temperament.map((nombre) => {  //si selecciono el nombre del input map y los devuelvo en un boton
                 return (
                   <div className="concatFiltro">
                   <span key={nombre}>
-                   
-                    <button className="boton3" onClick={(nombre)=> handleDelete(nombre)}>
+                    <button className="b" onClick={()=> handleDelete(nombre)}>X</button>
+                    <a className="boton3" >
                       {nombre} 
-                    </button>
+                    </a>
                   </span>
                   </div>
                 );  
               })}   
               
               <button
+                disabled ={true}  // se desabilita el boton de crear hasta que no exista el estado errors
+                id='buttonCreate'
                 className="boton5"
                 type="submit"
-                onClick={(e) => handleSubmit(e)}
-              > Create new Dog
+                
+              > Create new Dog 
               </button>
 
             </div>

@@ -9,7 +9,9 @@ export const FILTER_CREATED = "FILTER_CREATED";
 export const GET_DOG_NAME = "GET_DOG_NAME";
 export const GET_DETAIL = "GET_DETAIL";
 export const RES_STATE = "RES_STATE";
+export const DELETE = "DELETE";
 
+//me trae todos los dogs
 export function getDogs () {
     return async function (dispatch){
         let json = await axios("http://localhost:3001/dogs");
@@ -20,6 +22,7 @@ export function getDogs () {
     }
 
 }
+//me trae los temperamentos
 export function GetTemperaments() {
     return async function (dispatch) {
         var json = await axios.get("http://localhost:3001/temperament", );
@@ -29,35 +32,36 @@ export function GetTemperaments() {
         })
     }
 }
- //lo que llega en payload es lo que le mando desde el componente, el value del select
+ //filtra los dogs por termperamento 
 export function FilterDogsByTemperament(payload) {
     return {
         type: 'FILTER_BY_TEMPERAMENT',
         payload,
     }
 }
-
+// filtrado de ordenamiento asc o desc
 export function FilterByName(payload) {
     return {
         type: 'FILTER_BY_NAME',
         payload,
     }
 }
-
+//filtra por peso
 export function FilterByWeight(payload) {
     return {
         type: 'FILTER_BY_WEIGHT',
         payload,
     }
 }
-
-export function FilterCreated(payload) {  //filtra si son creados o son de la api
+// fritra si son de la api o los creados
+export function FilterCreated(payload) {
     return {
         type: 'FILTER_CREATED',
         payload,
     }
 }
-export function getDogName(name) {    //acá traigo del back-end los dogs que coincidan con el nombre pasado por query
+// filtra y busca por nombre lo que le pase por query
+export function getDogName(name) {    
     return async function (dispatch){
         try{  //mi ruta del back mas lo que el usuario le pase como nombre en la barra de búsqueda
             let json = await axios.get("http://localhost:3001/dogs?name=" + name);   
@@ -70,7 +74,7 @@ export function getDogName(name) {    //acá traigo del back-end los dogs que co
         }
     }
 }
-
+// accede a la informacion detallada
 export function getDetail(id){
     return async function(dispatch){
         const json = await axios.get('http://localhost:3001/dogs/'+id)
@@ -88,10 +92,9 @@ export function postDogs(payload){
     }
 }
 
-
-
-export function resState(){
-    return {
-        type:"RES_STATE",
-    }
-}
+export function deleteDog(id) {
+    return (dispatch) => {
+      dispatch({ type: DELETE, payload: id });
+    };
+  }
+  

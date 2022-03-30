@@ -3,6 +3,8 @@ const{ Temperament } = require('../db')
 const { Dog } = require('../db')
 const router = Router();
 
+const { getAllDogs } = require('../controllers/getInfo')
+
 router.post('/', async (req, res) => {
     let {
         name,
@@ -34,3 +36,39 @@ router.post('/', async (req, res) => {
 });
 
 module.exports= router;
+
+
+//------------------ DELETE --------------------\\
+
+
+// router.delete("/:id", async (req, res, next) => {
+//     const { id } = req.params;
+//     try {
+//       Dog.destroy({ where: { id: id } });
+//       let geDataForApi = await services.getAllDogs();
+//       let getDataFromDB = await Dog.findAll({
+//         include: Temperament,
+//       });
+//       // FORMATEO PARA Q DESDE API Y DESDE DB LLEGUEN AL FRONT IGUALES
+//       getDataFromDB = getDataFromDB.map((el) => {
+//         return {
+//           id: el.id,
+//           name: el.name,
+//           height: el.height,
+//           weight: el.weight,
+//           life_span: el.life_span,
+//           image: el.image,
+//           userCreate: true,
+//           temperaments: el.Temperaments.map((i) => {
+//             return i.name;
+//           }).join(", "),
+//         };
+//       });
+//       // resp de API y de DB juntas
+      
+//       res.send(geDataForApi);
+//       // res.redirect("/");
+//     } catch (err) {
+//       next(err);
+//     }
+//   });

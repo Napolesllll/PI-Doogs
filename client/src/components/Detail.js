@@ -11,10 +11,10 @@ export default function Detail(props){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getDetail(props.match.params.id));               //accedo al id pasandole props a mi componente Detail
+        dispatch(getDetail(props.match.params.id));   //accedo al id pasandole props a mi componente Detail
     }, [dispatch, props]);
 
-    const myDog = useSelector((state) => state.detail)              // me traigo el estado detail desde el reducer con useSelector
+    const myDog = useSelector((state) => state.detail) // me traigo el estado detail desde el reducer con useSelector
 
     return (
         <div className='backDetail' >
@@ -30,8 +30,8 @@ export default function Detail(props){
                     <h2>Height:{myDog[0].height}</h2>
                     <h2>Life span:{myDog[0].life_span}</h2>
                     <ul className='ulDetail'>
-                    Temperaments : 
-                    {!myDog[0].createdInDb? myDog[0].temperament  : myDog[0].Temperaments.map(el => el.name + (" "))}
+                    Temperaments: →  
+                    {!myDog[0].createdInDb? myDog[0].temperament + " " : myDog[0].Temperaments.map(el => el.name + (", "))}
                     </ul>
 
             <Link to= '/home'>

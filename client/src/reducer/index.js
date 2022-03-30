@@ -1,5 +1,5 @@
 
-import { GET_DOGS, FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, FILTER_BY_NAME, FILTER_BY_WEIGHT, FILTER_CREATED, GET_DOG_NAME, GET_DETAIL, RES_STATE} from '../actions/index';
+import { GET_DOGS, FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, FILTER_BY_NAME, FILTER_BY_WEIGHT, FILTER_CREATED, GET_DOG_NAME, GET_DETAIL } from '../actions/index';
 
 const initialState = {
     dogs : [],
@@ -33,7 +33,8 @@ function rootReducer (state = initialState, action) { //enviando info al estado
 
             let allDog = state.allDogs;
             let temperamentsFiltered = action.payload === "all"  ? allDog: allDog.filter((elem) =>
-              elem.temperament?.includes(action.payload)
+            //si existe ese temp devueve el estado con todos los dog que coincidan
+              elem.temperament?.includes(action.payload) 
                 );
                  return {
                        ...state,
@@ -98,11 +99,13 @@ function rootReducer (state = initialState, action) { //enviando info al estado
                 ...state,
                 detail: action.payload,    // a detail que es el estado inicial se le  pasa action.payload
             }
-        case RES_STATE:
-            return{
-                ...state,
-                detail: []
-                }
+        // case DELETE:
+        //     state.allDogs = state.allDogs.filter(
+        //         (el) => el.id !== action.payload
+        //       );
+        
+            //   return { ...state };
+        
             default: 
                 return state;
     }

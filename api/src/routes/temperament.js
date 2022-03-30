@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const {Dog, Temperament} = require('../db')
+const { Temperament } = require('../db')
 const  { API_KEY } = process.env;
 
 router.get('/', async (req, res) => {

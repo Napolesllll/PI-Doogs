@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => { // si esta en true me guarda los post que aga en la bd 
+conn.sync({ force: false }).then(() => { // si esta en flase me guarda los post que aga en la bd 
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

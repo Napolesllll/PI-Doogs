@@ -3,14 +3,16 @@ import React, { useState, useEffect } from "react";
 //importo los hooks de react-redux (previamente se instala npm i react-redux)
 import { useSelector, useDispatch } from "react-redux";
 //importo las actions que necesito en este componente
-import { getDogs, FilterDogsByTemperament, GetTemperaments, FilterByName, FilterByWeight, FilterCreated } from '../actions';
-//importo los componentes que voy a usar
+import { getDogs, FilterDogsByTemperament, GetTemperaments, FilterByName, FilterByWeight, FilterCreated,  } from '../actions';
+
 import { Link } from 'react-router-dom';
+//importo los componentes que voy a usar
 import Card from './Card'
 import Paginado from './Paginado'
 import SearchBar from "./SearchBar";
 
-import '../styles/Home.css'
+import '../styles/Home.css';
+
 export default function Home () {
     //me traigo el estado de mi action con useSelector para despacharlo posteriormente
 
@@ -25,10 +27,10 @@ export default function Home () {
     const indexOfLastDog = currentPage * dogsPerPage     //cuando empieza será 8 
     const indexOffirstDog = indexOfLastDog - dogsPerPage   // 0
     const currentDogs = allDogs.slice(indexOffirstDog, indexOfLastDog)  //slice toma una porción del arreglo dependiendo lo que le estoy pasando por parámetro
-    const [order, setOrder] = useState('');
+    const [ order, setOrder] = useState('');
 
     const pagedTotal = (pageNumber) => {  // renderiza segun el numero recibido
-      setCurrentPage(pageNumber);  //cuando setea la página los índices cambian y el slide se va modificando   
+      setCurrentPage(pageNumber);  //cuando setea la página los índices cambian y el slice se va modificando   
     }
 
     useEffect(()=>{  // la traigo para despacharla cuando la invoquen 
@@ -70,6 +72,11 @@ export default function Home () {
       setCurrentPage(1);    //despacho la acción llamada FilterCreated y accedo al valor de cada una de las opcioneS
       dispatch(FilterCreated(e.target.value))  //de value con el e.target.value - dependiendo de cuál clickea el usuario
   }
+  // function deleteAndBack(id) {
+  //   console.log(id);
+  //   deleteDog(id, dispatch);
+  //   dispatch(deleteDog(id));
+  // }
     return(
        <div className='content'>
            <Link  to="/dog">
@@ -100,7 +107,8 @@ export default function Home () {
                 </select>
                 <select onChange={(e) => handleFilterTemperaments(e)}>
                     <option value="all">All Temperaments</option>
-                    {allTemperaments?.map((elem) => (
+
+                    { allTemperaments?.map((elem) => ( // mapeo y me entrego los elem que coincidan
                     <option value={elem.name} key={elem.id}>{elem.name}</option>
                     ))}
                 </select>
@@ -116,8 +124,9 @@ export default function Home () {
              return(
                  <div key={el.id}>
                     <Link  to={'/dogs/' + el.id}>
-                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.temperaments && el.Temperaments.map((el) => el.name.concat(" "))} weight={el.weight}  key={el.id} />
+                      <Card image={el.image} name={el.name} temperament={el.temperament? el.temperament: el.Temperaments && el.Temperaments.map((el) => el.name.concat(", "))} weight={el.weight}  key={el.id} />
                      </Link>
+                      {/* <button onClick={() => deleteAndBack(el.id)}>Delete</button> */}
                  </div>
                     );
         })}
