@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
     }
     
 .card {
@@ -18,7 +19,8 @@
 .card:hover{
     background-color: #e1ecf7;
     text-transform: capitalize;
-    width: 600px;
+    transform: scale(1.1); 
+    transition: 0.5s;
     
    }
    

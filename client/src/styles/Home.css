@@ -17,6 +17,10 @@
     background-color: rgb(103, 169, 227);
 
 }
+.orden{
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 
 .reload{
     margin-top: 15px;

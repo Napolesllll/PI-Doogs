@@ -14,7 +14,7 @@ export default function Paged ({ dogsPerPage, allDogs, pagedTotal }) {
                 {pageNumber?.map(num =>( //si tengo ese arreglo, mapeálo y devolveme cada número que te devuelva el paginado    
                 <div className={styles.listContainer} key={num}>
                   <li className={styles.number} key={num}>
-                     <a href='#' onClick={()=> pagedTotal(num)} className={styles.link}>{num}</a>  
+                     <p href='#' onClick={()=> pagedTotal(num)} className={styles.link}>{num}</p>  
                   </li>
                 </div>
                 ))}         

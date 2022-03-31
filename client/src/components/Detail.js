@@ -26,9 +26,9 @@ export default function Detail(props){
                     </div>
                     <div className='detailInfo'>
                     <h1>{myDog[0].name}</h1>
-                    <h2>Weight:{myDog[0].weight}</h2>
-                    <h2>Height:{myDog[0].height}</h2>
-                    <h2>Life span:{myDog[0].life_span}</h2>
+                    <h3>Weight:{myDog[0].weight}</h3>
+                    <h3>Height:{myDog[0].height}</h3>
+                    <h3>Life span:{myDog[0].life_span}</h3>
                     <ul className='ulDetail'>
                     Temperaments: →  
                     {!myDog[0].createdInDb? myDog[0].temperament + " " : myDog[0].Temperaments.map(el => el.name + (", "))}

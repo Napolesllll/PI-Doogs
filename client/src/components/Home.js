@@ -119,7 +119,7 @@ export default function Home () {
         allDogs = {allDogs.length}
         pagedTotal = {pagedTotal}
         />
-        
+        <div className='orden'>
         { currentDogs?.map( (el) => {
              return(
                  <div key={el.id}>
@@ -130,6 +130,7 @@ export default function Home () {
                  </div>
                     );
         })}
+        </div>
        </div>
        </div>
     )
