@@ -132,6 +132,8 @@ export default function Home () {
         })}
         </div>
        </div>
+
+       <footer > 2022 © Jhon Brahian Cano </footer>
        </div>
     )
 }

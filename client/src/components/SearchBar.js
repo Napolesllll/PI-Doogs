@@ -11,25 +11,30 @@ export default function SearchBar () {
     const nombres = useSelector((state) => state.name)    
     
     function handleInputChange (e) {
-      e.preventDefault();    
-      setName(e.target.value); //lo que está tipeando el usuario va a ser mi estado local name
+    e.preventDefault();    
+        setName(e.target.value); //lo que está tipeando el usuario va a ser mi estado local name
     }
  
     function handleSubmit (e) {
         e.preventDefault();
-        if(nombres !== name){
+        
+        
+        if (setName(e.target.value) === nombres && name){
+            dispatch(getDogName(name));
+        }
+         else if (setName(e.target.value) ===  nombres || name){
             alert('Dog not found')
-            setName('');   
+            setName('');  
         }else{
             dispatch(getDogName(name));
-            setName('');  
         }
-       }
+        
+    }
      
     return(
         <div className='conten'>
             <input 
-             value = {name}
+             value={name}
              className='buscador'
              type ='search'
              placeholder='Buscar...' 

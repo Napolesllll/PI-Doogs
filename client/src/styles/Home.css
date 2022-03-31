@@ -1,12 +1,17 @@
 
 .content{
-    background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
+    background: url(https://i.pinimg.com/originals/d4/80/c4/d480c40dcb2d74ab9d31d96e8dc3cad1.png);
     background-repeat: no-repeat;
-	background-size: 100% 8%;
+	background-size: 100% 100%;
    
 }
 .titul{
-    margin-left: -500px;
+    /* margin-left: -500px; */
+    color: black;
+    background:rgba(103, 169, 227, 0.611);
+    width: 30%;
+    border-radius: 40PX;
+    margin-left: 100px;
 }
 
 
@@ -87,3 +92,14 @@ select:hover {
     background-color: #19a1fc3c; 
     background: url(https://thumbs.dreamstime.com/b/fondo-de-pantalla-para-perros-huella-vector-sobre-blanco-aislado-pasos-199267833.jpg);
 }
+
+footer {
+    position:absolute;
+    height:50px;
+    line-height:50px;
+    background:black;
+    color:white;
+    text-align:center;
+    left:0;
+    width:100%;
+  }
